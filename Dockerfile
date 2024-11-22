@@ -1,5 +1,5 @@
-# Usar una imagen base de Node.js
-FROM node:22.11.0
+# Usar una imagen base de Node.js para construir el backend
+FROM node:22.11.0-alpine
 
 # Establecer el directorio de trabajo dentro del contenedor
 WORKDIR /app
@@ -8,9 +8,9 @@ WORKDIR /app
 COPY package*.json ./
 
 # Instalar las dependencias
-RUN npm install
+RUN npm install --verbose
 
-# Copiar todo el código al contenedor
+# Copiar el resto del código fuente al contenedor
 COPY . .
 
 # Exponer el puerto en el que corre el backend
